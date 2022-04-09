@@ -1,4 +1,4 @@
-// converting an object into table
+// Convert an object into table
 
 export class Demo2 {
     constructor() {

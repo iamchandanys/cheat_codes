@@ -1,4 +1,4 @@
-// assigning a local object to the Observable field and subscribing
+// Assign a local object to the Observable field and subscribe
 // using 'of' from rxjs
 
 import { Observable, of } from "rxjs";
