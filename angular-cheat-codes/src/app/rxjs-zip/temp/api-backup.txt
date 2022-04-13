@@ -1,0 +1,32 @@
+[HttpGet]
+[Route("GetUserDetail")]
+public IActionResult GetUserDetail()
+{
+    Thread.Sleep(5000);
+
+    return Ok(new
+    {
+        name = "David",
+        age = 26
+    });
+}
+
+[HttpGet]
+[Route("GetUserProfile")]
+public IActionResult GetUserProfile()
+{
+    try
+    {
+        Thread.Sleep(10000);
+
+        return Ok(new
+        {
+            name = "David-Profile",
+            age = 26
+        });
+    }
+    catch(Exception ex)
+    {
+        return BadRequest(ex.Message);
+    }
+}
