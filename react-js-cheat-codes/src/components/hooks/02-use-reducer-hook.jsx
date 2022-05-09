@@ -19,8 +19,7 @@ const reducer = (state, action) => {
     }
 }
 
-// useReducer is usually preferable to useState when you have complex state logic that involves multiple sub-values or 
-// when the next state depends on the previous one.
+// useReducer is usually preferable to useState when you have complex state logic that involves multiple states.
 const UseReducerHook = () => {
     const [state, dispatch] = useReducer(reducer, { count: 0, showText: true });
 
