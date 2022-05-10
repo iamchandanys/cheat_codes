@@ -15,11 +15,12 @@ import UseLayoutEffectHook from './components/hooks/04-use-layout-effect-hook';
 import Context from "./components/hooks/06-use-context-hook";
 // eslint-disable-next-line no-unused-vars
 import UseMemoHook from "./components/hooks/07-use-memo-hook";
+// eslint-disable-next-line no-unused-vars
 import UseCallBackHook from './components/hooks/08-use-callback-hook';
 
 
 function App() {
-  return <UseCallBackHook />;
+  return <UseEffectHook />;
 }
 
 export default App;

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const UseStateHook = () => {
     // The useState() hook allows us to track State in a function component. 
     // State generally refers to data or properties that needs to be tracking in an application.
-    // Here, userData is the property and setUserData is the function used to mutate the property.
+    // As shown below, userData is the property and setUserData is the function used to mutate the property.
     const [userData, setUserData] = useState({ name: 'Chandan', age: 26 }); // useState accepts first parameter as initial value.
 
     const setUserName = () => {

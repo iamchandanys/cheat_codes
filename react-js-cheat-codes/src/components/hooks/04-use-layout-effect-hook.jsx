@@ -6,7 +6,7 @@ const UseLayoutEffectHook = () => {
 
     // The useLayoutEffect() is triggered synchronously before the DOM mutations are painted.
     // However, the useEffect() is called after the DOM mutations are painted.
-    // Suitable when we want to set any DOM property untill we get the result from API.
+    // Suitable when we want to set any DOM property untill we get the result from an API.
     useLayoutEffect(() => {
         setHeader("Use layout effect hook.");
     }, []);

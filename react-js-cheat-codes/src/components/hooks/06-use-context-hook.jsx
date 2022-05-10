@@ -4,8 +4,8 @@ import ContextPageTwo from './helper/context-page-two';
 
 export const AppContext = createContext(null);
 
-// “useContext” hook is used to create common data that can be accessed throughout the component hierarchy 
-// without passing the props down manually to each level.
+// useContext() hook is used to create common data that can be accessed throughout 
+// the component hierarchy without passing the props down manually to each level.
 
 const Context = () => {
     const [userName, setUserName] = useState("Type anything on textbox...");

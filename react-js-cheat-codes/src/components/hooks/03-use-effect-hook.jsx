@@ -7,9 +7,11 @@ const UseEffectHook = () => {
     const [count, increaseCount] = useState(0);
 
     // NOTE: useEffect() will be called atleast once irrespective of arguments. That is when the page loads.
-    // When no arguments are passed, useEffect() will be called each and every time when any of the STATEs gets updated.
+    // When no arguments are passed, useEffect() will be called each and every time when any of the STATEs gets UPDATED.
     // When empty array [] is passed, useEffect() gets called only once that too when the page loads.
-    // When arguments are passed, useEffect() will be called each and every time when any of the passed STATEs gets updated.
+    // When arguments are passed, useEffect() will be called each and every time when any of the passed STATEs gets UPDATED.
+    // UPDATED in the sense, it's previous values should change. If the new values and previous values are same, then it won't be considered as UPDATED.
+    // A function can have multiple useEffects().   
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts')
