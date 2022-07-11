@@ -1,40 +1,44 @@
-import React, { useReducer } from 'react';
+import React, { useReducer } from "react";
 
 const reducer = (state, action) => {
-    switch (action.type) {
-        case "INCREMENT":
-            return {
-                ...state,
-                count: state.count + 1
-            };
-        case "TOGGLE":
-            return {
-                ...state,
-                showText: !state.showText
-            };
-        default:
-            return {
-                ...state
-            };
-    }
-}
+  switch (action.type) {
+    case "INCREMENT":
+      return {
+        ...state,
+        count: state.count + action.countValue,
+      };
+    case "TOGGLE":
+      return {
+        ...state,
+        showText: !state.showText,
+      };
+    default:
+      return {
+        ...state,
+      };
+  }
+};
 
-// useReducer is usually preferable to useState when you have complex state logic that involves multiple states.
 const UseReducerHook = () => {
-    const [state, dispatch] = useReducer(reducer, { count: 0, showText: true });
+  // useReducer() hook is usually preferable to useState when we have complex state logic that involves multiple states.
+  const [state, dispatch] = useReducer(reducer, { count: 0, showText: true });
 
-    return (
-        <div>
-            {state.count}
-            &nbsp;
-            <button onClick={() => {
-                dispatch({ type: 'INCREMENT' });
-                dispatch({ type: 'TOGGLE' });
-            }}>Increment</button>
-            <br />
-            {state.showText && <p>Sample Text</p>}
-        </div>
-    );
-}
+  return (
+    <div>
+      {state.count}
+      &nbsp;
+      <button
+        onClick={() => {
+          dispatch({ type: "INCREMENT", countValue: 20 });
+          dispatch({ type: "TOGGLE" });
+        }}
+      >
+        Increment
+      </button>
+      <br />
+      {state.showText && <p>Sample Text</p>}
+    </div>
+  );
+};
 
 export default UseReducerHook;
