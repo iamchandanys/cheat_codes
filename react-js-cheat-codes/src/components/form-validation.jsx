@@ -1,6 +1,14 @@
 import Joi from "joi";
 import { Component } from "react";
 
+const mainDiv = {
+  padding: "20px",
+};
+
+const errorTag = {
+  color: "red",
+};
+
 const emailValidation = {
   minDomainSegments: 2,
   tlds: { allow: ["com", "net", "io"] },
@@ -16,9 +24,9 @@ class FormValidation extends Component {
     errors: {},
   };
   schema = Joi.object({
-    name: Joi.string().alphanum().min(3).max(10).required(),
-    email: Joi.string().email(emailValidation).required(),
-    number: Joi.number().integer().required(),
+    name: Joi.string().alphanum().min(3).max(10).required().label("Name"),
+    email: Joi.string().email(emailValidation).required().label("Email Id"),
+    number: Joi.number().integer().required().label("Phone Number"),
   });
 
   validate() {
@@ -42,43 +50,66 @@ class FormValidation extends Component {
     this.setState({ contactForm });
   }
 
-  onSubmit(e) {}
+  handleBlur(e) {
+    let result = this.validate();
+    let errors = { ...this.state.errors };
+    errors[e.currentTarget.name] = result[e.currentTarget.name];
+    this.setState({ errors });
+  }
+
+  onSubmit(e) {
+    const result = this.validate();
+    this.setState({ errors: result });
+    if (result) return;
+    window.alert("Call API");
+  }
 
   contactForm() {
-    const mainDiv = {
-      padding: "20px",
-    };
-
     return (
       <div style={mainDiv}>
         <div>
           Name: &nbsp;
           <input
             name="name"
+            autoComplete="off"
             value={this.state.contactForm.name}
             onChange={(e) => this.handleChange(e)}
+            onBlur={(e) => this.handleBlur(e)}
             required
           />
+          {this.state.errors && this.state.errors.name && (
+            <p style={errorTag}>{this.state.errors.name}</p>
+          )}
         </div>
         <br />
         <div>
           Email: &nbsp;
           <input
             name="email"
+            autoComplete="off"
             value={this.state.contactForm.email}
             onChange={(e) => this.handleChange(e)}
+            onBlur={(e) => this.handleBlur(e)}
             required
           />
+          {this.state.errors && this.state.errors.email && (
+            <p style={errorTag}>{this.state.errors.email}</p>
+          )}
         </div>
         <br />
         <div>
           Number: &nbsp;
           <input
             name="number"
+            autoComplete="off"
             value={this.state.contactForm.number}
             onChange={(e) => this.handleChange(e)}
+            onBlur={(e) => this.handleBlur(e)}
             required
           />
+          {this.state.errors && this.state.errors.number && (
+            <p style={errorTag}>{this.state.errors.number}</p>
+          )}
         </div>
         <br />
         <div>
