@@ -25,5 +25,5 @@ const UseStateHook = () => {
 export default UseStateHook;
 
 // Notes:
-// 1. useState() hook can't be used in class component.
+// 1. useState() hook can't be used in class components. Can only be used in stateless components.
 // 2. useState() accepts first parameter as initial value.
