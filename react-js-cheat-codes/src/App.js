@@ -17,11 +17,12 @@ import Context from "./components/hooks/06-use-context-hook";
 import UseMemoHook from "./components/hooks/07-use-memo-hook";
 // eslint-disable-next-line no-unused-vars
 import UseCallBackHook from "./components/hooks/08-use-callback-hook";
-import FormValidation from "./components/form-validation";
 // eslint-disable-next-line no-unused-vars
+import FormValidation from "./components/form-validation";
+import Profile from "./components/redux/profile";
 
 function App() {
-  return <FormValidation />;
+  return <Profile />;
 }
 
 export default App;

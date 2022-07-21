@@ -1,13 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit/dist/createSlice";
+import { createSlice } from "@reduxjs/toolkit";
 
 export const formSlice = createSlice({
-  name: "userDetails",
-  initialState: { value: { name: "", email: "" } },
+  name: "form",
+  initialState: {
+    formValues: {},
+    channelSettings: {},
+    channelProducts: [],
+  },
   reducers: {
-    login: (state, action) => {
-      state.value = action.payload;
+    saveForm: (state, action) => {
+      state.formValues = action.payload;
+    },
+    clearForm: (state, action) => {
+      state.formValues = {};
+      state.channelSettings = {};
+      state.channelProducts = [];
     },
   },
 });
+
+export const { saveForm, clearForm } = formSlice.actions;
 
 export default formSlice.reducer;
