@@ -1,0 +1,8 @@
+- Command to install Redux.
+    npm install redux react-redux @reduxjs/toolkit
+
+Step 1:
+Create a slice as like in formSlice.js
+
+Step 2:
+Configure a store as like in index.js and wrap the <App/> component with <Provider/> by passing the store prop.

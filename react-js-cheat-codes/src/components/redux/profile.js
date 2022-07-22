@@ -1,39 +1,54 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { saveForm, clearForm } from "./reducers/formSlice";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers } from "./actions/formActions";
 
 const Profile = () => {
-  const form = useSelector((state) => state.form);
+  const { users } = useSelector((state) => state.form);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
   return (
-    <>
-      <div>
-        <h2>Profile Page</h2>
-        <p>Name: {form.formValues?.name}</p>
-        <p>Email: {form.formValues?.email}</p>
-        <span>
-          <button
-            onClick={() => {
-              dispatch(
-                saveForm({ name: "Chandan", email: "chandan@gmail.com" })
-              );
-            }}
-          >
-            Login
-          </button>
-          &nbsp;
-          <button
-            onClick={() => {
-              dispatch(clearForm());
-            }}
-          >
-            Logout
-          </button>
-        </span>
-      </div>
-    </>
+    <div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Id</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Username</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Website</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {users?.value?.map((row, index) => (
+              <TableRow
+                key={index}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell>{row.id}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.username}</TableCell>
+                <TableCell>{row.email}</TableCell>
+                <TableCell>{row.website}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };
 
